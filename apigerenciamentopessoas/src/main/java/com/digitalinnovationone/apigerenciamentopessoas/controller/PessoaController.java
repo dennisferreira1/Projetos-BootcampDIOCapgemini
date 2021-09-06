@@ -2,7 +2,6 @@ package com.digitalinnovationone.apigerenciamentopessoas.controller;
 
 import com.digitalinnovationone.apigerenciamentopessoas.dto.MensagemRespostaDTO;
 import com.digitalinnovationone.apigerenciamentopessoas.dto.request.PessoaDTO;
-import com.digitalinnovationone.apigerenciamentopessoas.entity.Pessoa;
 import com.digitalinnovationone.apigerenciamentopessoas.exception.PessoaNaoEncontradaException;
 import com.digitalinnovationone.apigerenciamentopessoas.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,11 @@ public class PessoaController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void excluirPessoa(@PathVariable Long id) throws PessoaNaoEncontradaException {
         this.pessoaService.excluirPessoa(id);
+    }
+
+    @PutMapping("/{id}")
+    public MensagemRespostaDTO atualizarPessoa(@PathVariable Long id, @RequestBody PessoaDTO pessoaDTO) throws PessoaNaoEncontradaException {
+        return this.pessoaService.atualizarPessoa(id, pessoaDTO);
     }
 
 }
