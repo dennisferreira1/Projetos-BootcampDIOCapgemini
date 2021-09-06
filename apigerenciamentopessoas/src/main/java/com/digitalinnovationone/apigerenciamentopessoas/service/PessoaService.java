@@ -3,6 +3,7 @@ package com.digitalinnovationone.apigerenciamentopessoas.service;
 import com.digitalinnovationone.apigerenciamentopessoas.dto.MensagemRespostaDTO;
 import com.digitalinnovationone.apigerenciamentopessoas.dto.request.PessoaDTO;
 import com.digitalinnovationone.apigerenciamentopessoas.entity.Pessoa;
+import com.digitalinnovationone.apigerenciamentopessoas.exception.PessoaNaoEncontradaException;
 import com.digitalinnovationone.apigerenciamentopessoas.mapper.PessoaMapper;
 import com.digitalinnovationone.apigerenciamentopessoas.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,10 @@ public class PessoaService {
     public List<PessoaDTO> listar() {
         List<Pessoa> todasPessoas = pessoaRepository.findAll();
         return todasPessoas.stream().map(pessoa -> pessoaMapper.toDto(pessoa)).collect(Collectors.toList());
+    }
+
+    public PessoaDTO buscarPessoa(Long id) throws PessoaNaoEncontradaException {
+        Pessoa pessoaBuscada = this.pessoaRepository.findById(id).orElseThrow(() -> new PessoaNaoEncontradaException(id));
+        return this.pessoaMapper.toDto(pessoaBuscada);
     }
 }
