@@ -39,4 +39,10 @@ public class PessoaController {
         return this.pessoaService.buscarPessoa(id);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void excluirPessoa(@PathVariable Long id) throws PessoaNaoEncontradaException {
+        this.pessoaService.excluirPessoa(id);
+    }
+
 }

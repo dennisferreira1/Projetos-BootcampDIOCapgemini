@@ -39,7 +39,16 @@ public class PessoaService {
     }
 
     public PessoaDTO buscarPessoa(Long id) throws PessoaNaoEncontradaException {
-        Pessoa pessoaBuscada = this.pessoaRepository.findById(id).orElseThrow(() -> new PessoaNaoEncontradaException(id));
+        Pessoa pessoaBuscada = verificaSeExiste(id);
         return this.pessoaMapper.toDto(pessoaBuscada);
+    }
+
+    public void excluirPessoa(Long id) throws PessoaNaoEncontradaException {
+        verificaSeExiste(id);
+        this.pessoaRepository.deleteById(id);
+    }
+
+    private Pessoa verificaSeExiste(Long id) throws PessoaNaoEncontradaException {
+        return this.pessoaRepository.findById(id).orElseThrow(() -> new PessoaNaoEncontradaException(id));
     }
 }
