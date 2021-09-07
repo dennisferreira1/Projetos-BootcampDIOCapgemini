@@ -1,14 +1,15 @@
 <h2>Mini Curso - Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot</h2>
 
-Esse projeto foi desenvolvido durante o bootcamp da [Capgemini](https://www.capgemini.com/br-pt/) em parceria com a [Digital Innovatio One](https://web.digitalinnovation.one/home). O mini curso foi ministrado por [Rodrigo Peleias](https://github.com/rpeleias) e pode ser acessado nesse [link](https://web.digitalinnovation.one/project/desenvolvendo-um-sistema-de-gerenciamento-de-pessoas-em-api-rest-com-spring-boot/learning/59e5edaa-470d-44a3-8519-c082d765c71d?back=/track/capgemini-fullstack-java-and-angular).
+Esse projeto foi desenvolvido durante o bootcamp da [Capgemini](https://www.capgemini.com/br-pt/) em parceria com a [Digital Innovation One](https://web.digitalinnovation.one/home). O mini curso foi ministrado por [Rodrigo Peleias](https://github.com/rpeleias) e pode ser acessado nesse [link](https://web.digitalinnovation.one/project/desenvolvendo-um-sistema-de-gerenciamento-de-pessoas-em-api-rest-com-spring-boot/learning/59e5edaa-470d-44a3-8519-c082d765c71d?back=/track/capgemini-fullstack-java-and-angular).
 
 No projeto foram desenvolvidos e abordados os seguintes tópicos:
 
 * Setup inicial de projeto com o Spring Boot Initialzr
 * Criação de modelo de dados para o mapeamento de entidades em bancos de dados
+* Utilização do Lombok para automatizar métodos getter, setter e construtor
+* Utilização do MapStruct para mapear entidades e DTOs
 * Desenvolvimento de operações de gerenciamento de usuários (Cadastro, leitura, atualização e remoção de pessoas de um sistema).
 * Relação de cada uma das operações acima com o padrão arquitetural REST, e a explicação de cada um dos conceitos REST envolvidos durante o desenvolvimento do projeto.
-* Desenvolvimento de testes unitários para validação das funcionalidades
 * Implantação do sistema na nuvem através do Heroku
 
 Para executar o projeto no terminal, digite o seguinte comando:
@@ -20,7 +21,7 @@ mvn spring-boot:run
 Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:
 
 ```
-http://localhost:8080/api/v1/people
+http://localhost:8080/api/v1/pessoa
 ```
 
 
