@@ -8,6 +8,7 @@ O projeto foi desenvolvido utilizando tecnologias simples como HTML5, CSS3 e Jav
 
 * Estruturação de um layout
 * Técnicas de CSS3 com containers e variáveis
+* Responsividade
 * Posicionamento de elementos HTML com flexbox
 * Utilização de ícones armazenados na nuvem com Font Awesome
 * Utilização do plugin JQuery Owl Carousel para construção de um carrossel de imagens
