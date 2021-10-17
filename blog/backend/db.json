@@ -1,0 +1,23 @@
+{
+    "posts":
+    [
+        {
+            "id": 1,
+            "nome": "Dennis",
+            "mensagem": "Construindo uma aplicação de blog"
+
+        },
+        {
+            "id": 2,
+            "nome": "Ferreira",
+            "mensagem": "Minha primeira aplicação desse tipo"
+
+        },
+        {
+            "id": 3,
+            "nome": "Silva",
+            "mensagem": "Essa é minha primeira mensagem no blog"
+
+        }
+    ]
+}
