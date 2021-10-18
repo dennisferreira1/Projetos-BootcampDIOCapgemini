@@ -11,6 +11,7 @@ export class FeedComponent implements OnInit {
 
   posts: Post[] = []
   post: Post = {} as Post
+  nomeBusca: string = '';
 
   constructor(private postService: PostService) { }
 
@@ -26,6 +27,10 @@ export class FeedComponent implements OnInit {
     this.postService.addPost(this.post).subscribe(() => {
       location.assign('/feed');
     });
+  }
+
+  pesquisarPorNome(): void {
+    this.postService.getPostsPorNome(this.nomeBusca).subscribe((dados: Post[]) => this.posts = dados)
   }
 
 }
