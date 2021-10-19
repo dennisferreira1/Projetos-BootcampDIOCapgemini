@@ -15,11 +15,19 @@ export class PostService {
 
   }
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(url)
-  }
+  getPosts(limit: number, page: number, nome?: string): Observable<Post[]> {
+    let params = new HttpParams();
+    params = params.set('_page', page);
+    params = params.set('_limit', limit);
 
-  getPostsPorNome(nome: string): Observable<Post[]> {
+    if(nome){
+      params = params.set('nome_like', nome);
+    }
+
+    return this.http.get<Post[]>(url, {params: params})
+  }
+  
+  /* getPostsPorNome(nome: string): Observable<Post[]> {
     if(nome) {
       let params = new HttpParams();
       // configurando parâmetro para buscar por nome, ignorando maiúsculas e minúsculas
@@ -28,7 +36,7 @@ export class PostService {
     } else {
       return this.getPosts();
     }
-  }
+  } */
 
   addPost(post: Post): Observable<any> {
     return this.http.post(url, post);

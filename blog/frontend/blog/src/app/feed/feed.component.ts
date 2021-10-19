@@ -12,6 +12,9 @@ export class FeedComponent implements OnInit {
   posts: Post[] = []
   post: Post = {} as Post
   nomeBusca: string = '';
+  qtdPostsPorPagina = 5;
+  pagina = 0;
+  carregarMais= true;
 
   constructor(private postService: PostService) { }
 
@@ -20,7 +23,14 @@ export class FeedComponent implements OnInit {
   }
 
   getPosts(): void {
-    this.postService.getPosts().subscribe((dados: Post[]) => this.posts = dados)
+    this.postService.getPosts(this.qtdPostsPorPagina, ++this.pagina, this.nomeBusca).subscribe((dados: Post[]) => {
+      if(dados.length != 0) {
+        this.posts.push(...dados);
+        this.carregarMais = true;
+      } else {
+        this.carregarMais = false;
+      }
+    })
   }
 
   publicarPost(): void {
@@ -29,8 +39,17 @@ export class FeedComponent implements OnInit {
     });
   }
 
-  pesquisarPorNome(): void {
-    this.postService.getPostsPorNome(this.nomeBusca).subscribe((dados: Post[]) => this.posts = dados)
+  getPostsPorNome(nome: string): void {
+    this.nomeBusca = nome;
+    this.pagina = 0;
+    this.postService.getPosts(this.qtdPostsPorPagina, ++this.pagina, this.nomeBusca).subscribe((dados: Post[]) => {
+      if(dados.length != 0) {
+        this.posts = dados;
+        this.carregarMais = true
+      } else {
+        this.carregarMais = false;
+      }
+    })
   }
 
 }
